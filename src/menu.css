@@ -1,0 +1,28 @@
+/* menu.css */
+
+.menu {
+    text-align: center;
+  }
+.menu h2{
+ text-align: center;
+ color: white;
+}
+  .menu-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menu-button {
+    padding: 10px 20px;
+    margin: 0 5px; /* Adjust as needed */
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .menu-button:hover {
+    background-color: #555;
+  }
+  

@@ -1,0 +1,81 @@
+/* homepage.css */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.homepage {
+    overflow-x: hidden; 
+}
+
+.title {
+    text-align: center;
+    color: white; 
+    background-color: #f6b037; 
+    padding: 10px; 
+    border-radius: 5%; 
+    border-color: rgb(254, 254, 254);
+    border: solid;
+    margin-top: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.homeseparator {
+    height: 1px; 
+    background-color: white; 
+    margin: 20px auto; 
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+
+}
+
+.header {
+    text-align: center;
+}
+
+.header img {
+    width: 100vw; 
+    height: auto; 
+    margin-bottom: 20px;
+}
+
+.restaurant-info {
+    padding: 20px;
+    margin: 0 20px; 
+    font-size: 16px;
+    background-color: #f0f0f0; 
+    border-radius: 10px; 
+}
+
+/* Style for the button */
+.restaurant-info button {
+    background-color: #f6b037; 
+    color: white; 
+    border: none; 
+    border: solid;
+    margin-top: 20px;
+    border-color: black;
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+}
+
+
+@media (max-width: 480px) {
+    .header img {
+        max-width: 90%; 
+    }
+
+    .restaurant-info {
+        font-size: 14px; 
+    }
+}
+
+.link-no-underline {
+    text-decoration: none;
+    color: inherit; 
+  }
+  .cursive-title {
+    font-family: "Lobster", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  }
+  
