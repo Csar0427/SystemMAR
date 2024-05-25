@@ -4,7 +4,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './homepage.css';
-import hamburgerImage from 'D:/MenuAug/my-app/src/hamburger.jpg';
+import hamburgerImage from 'D:/MenuAugReal/my-app/src/hamburger.jpg';
 
 const Homepage = ({ onOpenNavbar }) => {
   return (
