@@ -170,10 +170,13 @@ body {
 .dessert-info button {
   background-color: #e6970f;
   color: #ffffff;
-  border: none;
+  border: solid;
+  border-width: 5px;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  border-color: black;
+
   font-size: 16px;
 }
 
@@ -300,7 +303,9 @@ body {
 .dessert-item button {
   background-color: #e6970f;
   color: #ffffff;
-  border: none;
+  border: solid;
+  border-color: black;
+  border-width: 2px;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;

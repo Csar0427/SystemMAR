@@ -83,18 +83,20 @@ const BasketSection = ({ basketItems, onRemoveItem, onReduceQuantity, addQuantit
      
       <div className="basket-items-container">
      
-        {basket.map((item, index) => (
-          <div key={index} className="basket-item">
-            <img src={item.image} alt={item.name} />
-            <p>
-              {item.name} - <span className="item-price">Price: ₱ {item.price}</span><br />
-              Quantity: {item.quantity}<br />
-              Size: {item.size}
-            </p>
-            <button className="remove-button" onClick={() => handleReduceQuantity(index, 1)}>-</button>
-            <button className="add-quantity-button" onClick={() => handleAddQuantity(index, 1)}>+</button>
-          </div>
-        ))}
+        {basket
+          .filter(item => item.quantity > 0)
+          .map((item, index) => (
+            <div key={index} className="basket-item">
+              <img src={item.image} alt={item.name} />
+              <p>
+                {item.name} - <span className="item-price">Price: ₱ {item.price}</span><br />
+                Quantity: {item.quantity}<br />
+                Size: {item.size}
+              </p>
+              <button className="remove-button" onClick={() => handleReduceQuantity(index, 1)}>-</button>
+              <button className="add-quantity-button" onClick={() => handleAddQuantity(index, 1)}>+</button>
+            </div>
+          ))}
       </div>
       {basket.length > 0 && (
         <div className="request-input">
@@ -110,7 +112,10 @@ const BasketSection = ({ basketItems, onRemoveItem, onReduceQuantity, addQuantit
         Total Price: ₱{totalPrice.toFixed(2)}
       </div>
       {orderPlaced && (
-        <p>Ticket Number: {ticketNumber}</p>
+        <>
+          <p>Ticket Number: {ticketNumber}</p>
+          <p>Show this ticket number to the waiter.</p>
+        </>
       )}
       {!orderPlaced && (
         <button className="place-order-button" onClick={handlePlaceOrder}>

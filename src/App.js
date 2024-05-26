@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import { Link, BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import BasketSection from './Basket';
@@ -9,7 +8,6 @@ import Homepage from './Homepage';
 import OrderSummary from './OrderSummary';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-
 import { faUtensils, faBasketShopping, faCake, faGlassWater, faBars } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 
@@ -114,9 +112,19 @@ const App = () => {
           <h3>Order</h3>
           <ul>
             <li>
-              <Link to="/basket" style={{ textDecoration: 'none' }}>
-                <FontAwesomeIcon icon={faBasketShopping} /> Basket
-              </Link>
+              {basketItems.length > 0 ? (
+                <Link
+                  to="/basket"
+                  style={{ textDecoration: 'none' }}
+                  onClick={() => setSidebarOpen(false)} // Close navbar on link click
+                >
+                  <FontAwesomeIcon icon={faBasketShopping} /> Basket
+                </Link>
+              ) : (
+                <span style={{ textDecoration: 'none', cursor: 'not-allowed' }}>
+                  <FontAwesomeIcon icon={faBasketShopping} /> Basket
+                </span>
+              )}
             </li>
           </ul>
         </nav>
@@ -132,13 +140,17 @@ const App = () => {
             />
             <Route
               path="/basket"
-              element={<BasketSection
-                basketItems={basketItems}
-                onPlaceOrder={placeOrder}
-                onRemoveItem={removeFromBasket}
-                onReduceQuantity={handleReduceQuantity} // Pass handleReduceQuantity instead of reduceQuantity
-                addQuantity={addQuantity}
-              />}
+              element={basketItems.length > 0 ? (
+                <BasketSection
+                  basketItems={basketItems}
+                  onPlaceOrder={placeOrder}
+                  onRemoveItem={removeFromBasket}
+                  onReduceQuantity={handleReduceQuantity} // Pass handleReduceQuantity instead of reduceQuantity
+                  addQuantity={addQuantity}
+                />
+              ) : (
+                <Navigate to="/" />
+              )}
             />
           </Routes>
         </div>
