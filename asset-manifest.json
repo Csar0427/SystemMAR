@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/SystemMAR/static/css/main.c3140a85.css",
+    "main.js": "/SystemMAR/static/js/main.d03de5b0.js",
+    "static/js/453.b0cbd5c8.chunk.js": "/SystemMAR/static/js/453.b0cbd5c8.chunk.js",
+    "static/media/FRUIT.jpg": "/SystemMAR/static/media/FRUIT.ef030613b60dd822e8b0.jpg",
+    "static/media/CAKE.jpg": "/SystemMAR/static/media/CAKE.6c9abf3615a0c358b8b3.jpg",
+    "static/media/hamburger.jpg": "/SystemMAR/static/media/hamburger.c1bc4dfad7ec7dc6e729.jpg",
+    "static/media/CHEESE.jpg": "/SystemMAR/static/media/CHEESE.28ffd5b7f5a11c1c80da.jpg",
+    "static/media/SPAG.jpg": "/SystemMAR/static/media/SPAG.018e442050928156b456.jpg",
+    "static/media/grilled.jpg": "/SystemMAR/static/media/grilled.961e4ae4a7ab4d82f82c.jpg",
+    "static/media/TEA.jpg": "/SystemMAR/static/media/TEA.187fdca809c72dbbc539.jpg",
+    "index.html": "/SystemMAR/index.html",
+    "main.c3140a85.css.map": "/SystemMAR/static/css/main.c3140a85.css.map",
+    "main.d03de5b0.js.map": "/SystemMAR/static/js/main.d03de5b0.js.map",
+    "453.b0cbd5c8.chunk.js.map": "/SystemMAR/static/js/453.b0cbd5c8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c3140a85.css",
+    "static/js/main.d03de5b0.js"
+  ]
+}
