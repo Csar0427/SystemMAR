@@ -2,14 +2,15 @@
 body {
   background-color: #23262a;
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
 }
 
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw; /* Adjust the width to fill the viewport */
+  width: 100vw;
 }
 
 .menu-toggle {
@@ -23,14 +24,14 @@ body {
 }
 
 .menu-toggle svg {
-  font-size: 16px; /* Smaller font size */
+  font-size: 16px;
   color: #ffffff;
 }
 
 .navbar {
-  width: 40%; /* Adjusted width */
+  width: 60%;
   background-color: #e6970f;
-  padding: 10px 6px; /* Adjusted padding */
+  padding: 20px 16px;
   position: fixed;
   top: 0;
   left: -100%;
@@ -53,200 +54,202 @@ body {
 }
 
 .navbar ul li {
-  margin-bottom: 8px; /* Adjusted margin */
+  margin-bottom: 12px;
 }
 
 .navbar ul li a {
   background-color: #e6970f;
   border: none;
   text-align: left;
-  padding: 6px; /* Adjusted padding */
+  padding: 8px;
   transition: background-color 0.3s;
-  max-width: 90%; /* Set maximum width for the buttons */
-  overflow-wrap: break-word; /* Allow text to wrap within button */
-  font-size: 8px; /* Adjusted font size */
-  text-decoration: none; /* Remove underline */
-  color: #ffffff; /* Set text color */
+  max-width: 90%;
+  overflow-wrap: break-word;
+  font-size: 12px;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .navbar ul li a:hover {
   background-color: #dcdcdc;
+  color: #000000;
 }
 
 .navbar h3 {
   font-weight: 500;
   color: #000000;
-  font-size: 7px; /* Adjusted font size */
+  font-size: 14px;
 }
 
 .navbar h2 {
   text-align: left;
   text-decoration: none;
-  color: inherit; 
+  color: inherit;
   margin-top: 50px;
-  margin-bottom: 2px;
-  font-family: "Lobster", sans-serif;
+  margin-bottom: 10px;
+  font-family: 'Lobster', sans-serif;
   font-weight: 200;
   font-style: normal;
-  font-size: 20px;
+  font-size: 24px;
 }
-
 
 .separator {
   border-top: 1px solid #ccc;
-  margin: 2px 0; /* Adjusted margin */
+  margin: 10px 0;
 }
 
 .content {
   margin-left: 0;
 }
 
-/* Remaining styles */
-.appetizer-section,
-.dessert-section,
-.drink-section,
-.main-course-section {
+/* Section styles */
+.section {
   width: 100%;
-  font-size: 10px;
-  margin-top: 100px;
-  margin-left: 20px;
-  color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.appetizer-menu,
-.dessert-menu,
-.drink-menu,
-.main-course-menu {
-  width: 100%;
+.dessert-section h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.appetizer-item,
-.dessert-item,
-.drink-item,
-.main-course-item {
+.dessert-section p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.menu {
   display: flex;
-  background-color: #c2875c;
-  border-radius: 5px; /* Adjusted border radius */
-  margin-bottom: 8px; /* Adjusted margin */
-  overflow: hidden;
-  border: solid;
-  border-color: #f8e29b ;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.appetizer-item:nth-child(even),
-.dessert-item:nth-child(even),
-.drink-item:nth-child(even),
-.main-course-item:nth-child(even) {
-  background-color: #c2875c;
+.item {
+  background-color: #ffffff;
+  color: #23262a;
+  width: 45%;
+  margin: 10px 2.5%;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.appetizer-item:hover,
-.dessert-item:hover,
-.drink-item:hover,
-.main-course-item:hover {
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1); /* Adjusted box shadow */
+.item:hover {
+  transform: scale(1.05);
 }
 
-.column-left {
-  padding: 10px; /* Adjusted padding */
-  flex: 1;
-  max-width: 80%; /* Set maximum width for responsiveness */
-  margin-left: 10px;
-}
-
-.column-right img {
+.dessert-image {
+  width: 100%;
   height: auto;
-  display: block;
-  margin-right: 30px; /* Adjusted margin */
-  max-width: 90%; /* Adjusted max-width */
+  border-radius: 8px;
 }
 
-
-.column-left h3 {
-  font-weight: bold;
-  font-size: 8px; /* Adjusted font size */
-  margin-bottom: 4px; /* Adjusted margin */
-}
-
-.column-left p {
-  font-size: 6px; /* Adjusted font size */
-  margin-bottom: 4px; /* Adjusted margin */
-}
-
-.column-left button {
-  background-color: #ececec;
-  border: none;
-  padding: 2px 4px; /* Adjusted padding */
-  cursor: pointer;
-  font-size: 8px; /* Adjusted font size */
-  border-radius: 3px;
+.dessert-info {
   margin-top: 10px;
 }
 
-.column-left button:hover {
-  background-color: #dcdcdc;
+.dessert-info h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.dessert-info p {
+  font-size: 16px;
+  color: #e6970f;
+}
+
+.dessert-info button {
+  background-color: #e6970f;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dessert-info button:hover {
+  background-color: #d5860e;
 }
 
 /* Description section */
-.appetizer-description,
-.dessert-description,
-.drink-description,
-.main-course-description {
+.description {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #312e2e;
-  border-radius: 5px; /* Adjusted border radius */
-  padding: 10px; /* Adjusted padding */
+  border-radius: 8px;
+  padding: 20px;
   z-index: 9999;
-  filter: none;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .description-content {
   text-align: center;
 }
 
-.appetizer-description h3,
-.dessert-description h3,
-.drink-description h3,
-.main-course-description h3 {
-  font-weight: bold;
-  font-size: 10px; /* Adjusted font size */
-  margin-bottom: 4px; /* Adjusted margin */
+.description h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
   color: #cfcfcf;
 }
 
-.appetizer-description p,
-.dessert-description p,
-.drink-description p,
-.main-course-description p {
-  font-size: 6px; /* Adjusted font size */
-  margin-bottom: 4px; /* Adjusted margin */
+.description p {
+  font-size: 16px;
+  margin-bottom: 10px;
   color: #e5dede;
 }
 
-.appetizer-description button,
-.dessert-description button,
-.drink-description button,
-.main-course-description button {
-  background-color: #ececec;
+.quantity-counter {
+  margin: 10px 0;
+}
+
+.quantity-counter label {
+  margin-right: 10px;
+  color: #e5dede;
+}
+
+.quantity-counter input {
+  width: 50px;
+  font-size: 16px;
+  padding: 2px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.close-button,
+.order-button {
+  background-color: #e6970f;
+  color: #ffffff;
   border: none;
-  padding: 2px 4px; /* Adjusted padding */
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 8px; /* Adjusted font size */
-  border-radius: 3px;
-  margin-top: 10px;
-  margin-left: 5px;
+  font-size: 16px;
 }
 
-.appetizer-description button:hover,
-.dessert-description button:hover,
-.drink-description button:hover,
-.main-course-description button:hover {
-  background-color: #dcdcdc;
+.close-button:hover,
+.order-button:hover {
+  background-color: #d5860e;
 }
 
+/* Additional size-options styling */
 .size-options button {
   border: 1px solid #ccc;
   background-color: #fff;
@@ -260,4 +263,68 @@ body {
   background-color: #ffcc00;
 }
 
+/* Additional CSS for DessertSection Component */
+.dessert-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+}
 
+.dessert-item {
+  background-color: #ffffff;
+  color: #23262a;
+  width: 90%; /* Adjusted width for better responsiveness */
+  margin-bottom: 20px; /* Adjusted margin for spacing */
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.dessert-item:hover {
+  transform: scale(1.05);
+}
+
+.dessert-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.dessert-item h3,
+.dessert-item p {
+  margin: 10px 0;
+}
+
+.dessert-item button {
+  background-color: #e6970f;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.dessert-item button:hover {
+  background-color: #d5860e;
+}
+
+@media (max-width: 768px) {
+  .dessert-item {
+    width: 100%; /* Adjusted width for smaller screens */
+  }
+}
+.toast-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+}

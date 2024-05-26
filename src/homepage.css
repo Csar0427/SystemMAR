@@ -7,7 +7,7 @@
 .title {
     text-align: center;
     color: white; 
-    background-color: #f6b037; 
+    background-color: #ff8b00; 
     padding: 10px; 
     border-radius: 5%; 
     border-color: rgb(254, 254, 254);
@@ -43,11 +43,12 @@
     font-size: 16px;
     background-color: #f0f0f0; 
     border-radius: 10px; 
+    color: black;
 }
 
 /* Style for the button */
 .restaurant-info button {
-    background-color: #f6b037; 
+    background-color: #ff8b00; 
     color: white; 
     border: none; 
     border: solid;

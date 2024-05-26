@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
-import drinks from "./database/drinksDb"; // Importing drinks data
+import drinks from "./database/drinksDb";
 import './App.css';
 
 const DrinkSection = ({ addToBasket }) => {
   const [selectedDrink, setSelectedDrink] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [descriptionVisible, setDescriptionVisible] = useState(false);
-  const [quantity, setQuantity] = useState(1); // State for quantity
+  const [quantity, setQuantity] = useState(1);
+  const [orderAdded, setOrderAdded] = useState(false); // State for order added notification
 
-  const handleItemClick = (index) => {
-    setSelectedDrink(drinks[index]);
+  const handleItemClick = (drink) => {
+    setSelectedDrink(drink);
     setDescriptionVisible(true);
   };
 
   const handleCloseDescription = () => {
     setSelectedDrink(null);
     setDescriptionVisible(false);
-    setSelectedSize(null); // Reset selected size when closing description
+    setSelectedSize(null);
+    setQuantity(1);
   };
 
   const handleOrder = () => {
-    // Handle order logic here, you can use selectedDrink, selectedSize, and quantity state
     if (selectedDrink && selectedSize && quantity > 0) {
-      addToBasket({ ...selectedDrink, size: selectedSize, quantity });
-      setSelectedDrink(null);
-      setQuantity(1);
+      const price = selectedDrink.price[selectedSize]; // Extract the correct price for the selected size
+      addToBasket({ ...selectedDrink, size: selectedSize, price, quantity });
+      setOrderAdded(true); // Set order added notification to true
+      handleCloseDescription();
+      setTimeout(() => {
+        setOrderAdded(false); // Reset order added notification after 2 seconds
+      }, 2000);
     }
   };
 
@@ -32,25 +37,37 @@ const DrinkSection = ({ addToBasket }) => {
     setSelectedSize(size);
   };
 
+  const handleQuantityChange = (e) => {
+    const value = e.target.value;
+    const parsedValue = parseInt(value, 10);
+    if (value === '' || (parsedValue >= 1)) {
+      setQuantity(value === '' ? '' : parsedValue);
+    }
+  };
+
+  const handleQuantityBlur = () => {
+    if (quantity === '' || quantity < 1) {
+      setQuantity(1);
+    }
+  };
+
   return (
-    <div className="drink-section">
+    <div className="section dessert-section">
       <h2>Drinks</h2>
       <p>Quench your thirst with our refreshing drinks.</p>
-      <div className="drink-menu">
+      <div className="menu dessert-menu">
         {drinks.map((drink, index) => (
-          <div key={index} className="drink-item" onClick={() => handleItemClick(index)}>
-            <div className="column-left">
+          <div key={index} className="item dessert-item" onClick={() => handleItemClick(drink)}>
+            <img src={drink.image} alt={drink.name} />
+            <div className="dessert-info">
               <h3>{drink.name}</h3>
-              <button onClick={() => { setSelectedDrink(drink); setDescriptionVisible(true); }}>Order</button>
-            </div>
-            <div className="column-right">
-              <img src={drink.image} alt={drink.name} />
+              <button onClick={() => handleItemClick(drink)}>Order</button>
             </div>
           </div>
         ))}
       </div>
       {selectedDrink && descriptionVisible && (
-        <div className="drink-description">
+        <div className="description dessert-description">
           <div className="description-content">
             <h3>{selectedDrink.name}</h3>
             <p>{selectedDrink.description}</p>
@@ -66,13 +83,26 @@ const DrinkSection = ({ addToBasket }) => {
               ))}
             </div>
             <div className="quantity-counter">
-              <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value))} style={{ width: '50px', fontSize: '14px' }} />
+              <label>Quantity:</label>
+              <input 
+                type="number" 
+                min="1" 
+                value={quantity} 
+                onChange={handleQuantityChange}
+                onBlur={handleQuantityBlur}
+                style={{ width: '50px', fontSize: '14px' }} 
+              />
             </div>
             <div className="button-group">
-              <button onClick={handleCloseDescription}>Close</button>
-              <button onClick={handleOrder}>Order</button>
+              <button className="close-button" onClick={handleCloseDescription}>Close</button>
+              <button className="order-button" onClick={handleOrder}>Order Now</button>
             </div>
           </div>
+        </div>
+      )}
+      {orderAdded && (
+        <div className="order-notification">
+          <p>Order added to basket!</p>
         </div>
       )}
     </div>

@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import { Link, BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import BasketSection from './Basket';
@@ -16,6 +17,7 @@ const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [basketItems, setBasketItems] = useState([]);
   const [generatedTicketNumber, setGeneratedTicketNumber] = useState(null);
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -33,18 +35,17 @@ const App = () => {
     setBasketItems(updatedBasket);
   };
 
-  const reduceQuantity = (index, quantityToRemove) => {
-    const updatedBasketItems = [...basketItems];
-    const updatedItem = { ...updatedBasketItems[index] };
-    
-    if (quantityToRemove >= updatedItem.quantity) {
-      updatedItem.quantity = 0;
-    } else {
-      updatedItem.quantity -= quantityToRemove;
-    }
+  const handleReduceQuantity = (index) => {
+    if (!orderPlaced) {
+      const updatedBasketItems = [...basketItems];
+      const updatedItem = { ...updatedBasketItems[index] };
   
-    updatedBasketItems[index] = updatedItem;
-    setBasketItems(updatedBasketItems);
+      if (updatedItem.quantity > 0) { // Check if quantity is greater than 0 before reducing
+        updatedItem.quantity -= 1;
+        updatedBasketItems[index] = updatedItem;
+        setBasketItems(updatedBasketItems); // Update the state with the updated basket items array
+      }
+    }
   };
 
   const addQuantity = (index, amount) => {
@@ -71,32 +72,45 @@ const App = () => {
           <FontAwesomeIcon icon={faBars} />
         </button>
         <nav className={`navbar ${sidebarOpen ? 'open' : ''}`}>
-        <h2>
-        <Link to="/" onClick={() => setSidebarOpen(false)} style={{ textDecoration: 'none', color: 'white' }}>
-          <FontAwesomeIcon icon={faCoffee} style={{ marginRight: '8px' }} />
-          Travel Mug Cafe
-        </Link>
-      </h2>
+          <h2>
+            <Link to="/" onClick={() => setSidebarOpen(false)} style={{ textDecoration: 'none', color: 'white' }}>
+              <FontAwesomeIcon icon={faCoffee} style={{ marginRight: '8px' }} />
+              Travel Mug Cafe
+            </Link>
+          </h2>
           <h3>best since 2018</h3>
           <div className="separator"></div>
           <h3>Menu</h3>
           <ul>
             <li>
-              <Link to="/main-course" style={{ textDecoration: 'none' }}>
+              <Link
+                to="/main-course"
+                style={{ textDecoration: 'none' }}
+                onClick={() => setSidebarOpen(false)} // Close navbar on link click
+              >
                 <FontAwesomeIcon icon={faUtensils} /> Main Course
               </Link>
             </li>
             <li>
-              <Link to="/drink" style={{ textDecoration: 'none' }}>
+              <Link
+                to="/drink"
+                style={{ textDecoration: 'none' }}
+                onClick={() => setSidebarOpen(false)} // Close navbar on link click
+              >
                 <FontAwesomeIcon icon={faGlassWater} /> Drinks
               </Link>
             </li>
             <li>
-              <Link to="/dessert" style={{ textDecoration: 'none' }}>
+              <Link
+                to="/dessert"
+                style={{ textDecoration: 'none' }}
+                onClick={() => setSidebarOpen(false)} // Close navbar on link click
+              >
                 <FontAwesomeIcon icon={faCake} /> Dessert
               </Link>
             </li>
           </ul>
+
           <h3>Order</h3>
           <ul>
             <li>
@@ -122,7 +136,7 @@ const App = () => {
                 basketItems={basketItems}
                 onPlaceOrder={placeOrder}
                 onRemoveItem={removeFromBasket}
-                onReduceQuantity={reduceQuantity}
+                onReduceQuantity={handleReduceQuantity} // Pass handleReduceQuantity instead of reduceQuantity
                 addQuantity={addQuantity}
               />}
             />

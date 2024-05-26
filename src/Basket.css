@@ -1,17 +1,28 @@
 .basket-section {
     background-color: #f9f9f9; /* Light gray background */
     padding: 5px; /* Adjusted padding */
-    border-radius: 3px; /* Adjusted border radius */
+    border-radius: 5px; /* Adjusted border radius */
     margin-top: 100px; /* Adjusted margin */
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
     border: solid;
-    border-width: 20px;
-    border-color: rgb(249, 199, 47);
+    border-width: 5px;
+    border-color:#e6970f;
+    color: black;
+    
 
   }
+  .basket-section h2{
+    left: 0;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+  }
+
+.basketseparator{
+  color: rgb(0, 0, 0);
+}
   
   .basket-items-container {
     width: 80%;
