@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import mainCourses from "./database/mainCourseDb";
-import './App.css';
+import "./App.css";
 
 const MainCourse = ({ addToBasket }) => {
   const [selectedMainCourse, setSelectedMainCourse] = useState(null);
@@ -33,13 +33,13 @@ const MainCourse = ({ addToBasket }) => {
   const handleQuantityChange = (e) => {
     const value = e.target.value;
     const parsedValue = parseInt(value, 10);
-    if (value === '' || (parsedValue >= 1)) {
-      setQuantity(value === '' ? '' : parsedValue);
+    if (value === "" || parsedValue >= 1) {
+      setQuantity(value === "" ? "" : parsedValue);
     }
   };
 
   const handleQuantityBlur = () => {
-    if (quantity === '' || quantity < 1) {
+    if (quantity === "" || quantity < 1) {
       setQuantity(1);
     }
   };
@@ -50,11 +50,21 @@ const MainCourse = ({ addToBasket }) => {
       <p>Indulge in our delightful main courses.</p>
       <div className="menu dessert-menu">
         {mainCourses.map((mainCourse, index) => (
-          <div key={index} className={`item dessert-item ${index % 2 === 0 ? 'left' : 'right'}`} onClick={() => handleItemClick(mainCourse)}>
-            <img src={mainCourse.image} alt={mainCourse.name} className="dessert-image" />
+          <div
+            key={index}
+            className={`item dessert-item ${
+              index % 2 === 0 ? "left" : "right"
+            }`}
+            onClick={() => handleItemClick(mainCourse)}
+          >
+            <img
+              src={mainCourse.image}
+              alt={mainCourse.name}
+              className="dessert-image"
+            />
             <div className="dessert-info">
               <h3>{mainCourse.name}</h3>
-              <p>{mainCourse.price}</p>
+              <p className="price">{mainCourse.price}</p>
               <button onClick={() => handleItemClick(mainCourse)}>Order</button>
             </div>
           </div>
@@ -67,17 +77,21 @@ const MainCourse = ({ addToBasket }) => {
             <p>{selectedMainCourse.description}</p>
             <div className="quantity-counter">
               <label>Quantity:</label>
-              <input 
-                type="number" 
-                min="1" 
-                value={quantity} 
+              <input
+                type="number"
+                min="1"
+                value={quantity}
                 onChange={handleQuantityChange}
                 onBlur={handleQuantityBlur}
               />
             </div>
             <div className="button-group">
-              <button className="close-button" onClick={handleCloseDescription}>Close</button>
-              <button className="order-button" onClick={handleOrder}>Order Now</button>
+              <button className="close-button" onClick={handleCloseDescription}>
+                Close
+              </button>
+              <button className="order-button" onClick={handleOrder}>
+                Order Now
+              </button>
             </div>
           </div>
         </div>
@@ -89,6 +103,6 @@ const MainCourse = ({ addToBasket }) => {
       )}
     </div>
   );
-}
+};
 
 export default MainCourse;

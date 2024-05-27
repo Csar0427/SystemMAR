@@ -2,7 +2,7 @@
 body {
   background-color: #23262a;
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   color: #ffffff;
 }
 
@@ -10,7 +10,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
 }
 
 .menu-toggle {
@@ -23,9 +22,30 @@ body {
   cursor: pointer;
 }
 
-.menu-toggle svg {
-  font-size: 16px;
-  color: #ffffff;
+.menu-toggle .hamburger {
+  display: block;
+  cursor: pointer;
+  z-index: 9999;
+}
+.menu-toggle .hamburger .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle .hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle .hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle .hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .navbar {
@@ -54,7 +74,7 @@ body {
 }
 
 .navbar ul li {
-  margin-bottom: 12px;
+  margin-bottom: 28px;
 }
 
 .navbar ul li a {
@@ -68,6 +88,11 @@ body {
   font-size: 12px;
   text-decoration: none;
   color: #ffffff;
+  font-size: 20px;
+}
+
+.navbar span {
+  font-size: 20px;
 }
 
 .navbar ul li a:hover {
@@ -78,7 +103,8 @@ body {
 .navbar h3 {
   font-weight: 500;
   color: #000000;
-  font-size: 14px;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .navbar h2 {
@@ -87,7 +113,7 @@ body {
   color: inherit;
   margin-top: 50px;
   margin-bottom: 10px;
-  font-family: 'Lobster', sans-serif;
+  font-family: "Lobster", sans-serif;
   font-weight: 200;
   font-style: normal;
   font-size: 24px;
@@ -99,15 +125,13 @@ body {
 }
 
 .content {
-  margin-left: 0;
+  width: 300px;
 }
 
 /* Section styles */
 .section {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 50px auto;
 }
 
 .dessert-section h2 {
@@ -332,4 +356,8 @@ body {
   padding: 10px 20px;
   border-radius: 5px;
   z-index: 1000;
+}
+
+.price {
+  font-weight: bold;
 }

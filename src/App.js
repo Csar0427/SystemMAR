@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
-import { Link, BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import BasketSection from './Basket';
-import MainCourseSection from './MainCourseSection'; 
-import DrinkSection from './DrinkSection';
-import DessertSection from './DessertSection';
-import Homepage from './Homepage'; 
-import OrderSummary from './OrderSummary';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { faUtensils, faBasketShopping, faCake, faGlassWater, faBars } from '@fortawesome/free-solid-svg-icons';
-import './App.css';
+import React, { useState } from "react";
+import {
+  Link,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import BasketSection from "./Basket";
+import MainCourseSection from "./MainCourseSection";
+import DrinkSection from "./DrinkSection";
+import DessertSection from "./DessertSection";
+import Homepage from "./Homepage";
+import OrderSummary from "./OrderSummary";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUtensils,
+  faBasketShopping,
+  faCake,
+  faGlassWater,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
+import "./App.css";
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -37,8 +49,9 @@ const App = () => {
     if (!orderPlaced) {
       const updatedBasketItems = [...basketItems];
       const updatedItem = { ...updatedBasketItems[index] };
-  
-      if (updatedItem.quantity > 0) { // Check if quantity is greater than 0 before reducing
+
+      if (updatedItem.quantity > 0) {
+        // Check if quantity is greater than 0 before reducing
         updatedItem.quantity -= 1;
         updatedBasketItems[index] = updatedItem;
         setBasketItems(updatedBasketItems); // Update the state with the updated basket items array
@@ -55,7 +68,7 @@ const App = () => {
   const placeOrder = () => {
     const generatedTicketNumber = Math.floor(Math.random() * 1000000);
     setGeneratedTicketNumber(generatedTicketNumber);
-    console.log('Placing order:', basketItems);
+    console.log("Placing order:", basketItems);
     setBasketItems([]);
   };
 
@@ -67,12 +80,21 @@ const App = () => {
     <Router>
       <div className="app">
         <button className="menu-toggle" onClick={toggleSidebar}>
-          <FontAwesomeIcon icon={faBars} />
+          <div className={`hamburger ${sidebarOpen ? "active" : ""}`}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
         </button>
-        <nav className={`navbar ${sidebarOpen ? 'open' : ''}`}>
+
+        <nav className={`navbar ${sidebarOpen ? "open" : ""}`}>
           <h2>
-            <Link to="/" onClick={() => setSidebarOpen(false)} style={{ textDecoration: 'none', color: 'white' }}>
-              <FontAwesomeIcon icon={faCoffee} style={{ marginRight: '8px' }} />
+            <Link
+              to="/"
+              onClick={() => setSidebarOpen(false)}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <FontAwesomeIcon icon={faCoffee} style={{ marginRight: "8px" }} />
               Travel Mug Cafe
             </Link>
           </h2>
@@ -83,7 +105,7 @@ const App = () => {
             <li>
               <Link
                 to="/main-course"
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: "none" }}
                 onClick={() => setSidebarOpen(false)} // Close navbar on link click
               >
                 <FontAwesomeIcon icon={faUtensils} /> Main Course
@@ -92,7 +114,7 @@ const App = () => {
             <li>
               <Link
                 to="/drink"
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: "none" }}
                 onClick={() => setSidebarOpen(false)} // Close navbar on link click
               >
                 <FontAwesomeIcon icon={faGlassWater} /> Drinks
@@ -101,7 +123,7 @@ const App = () => {
             <li>
               <Link
                 to="/dessert"
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: "none" }}
                 onClick={() => setSidebarOpen(false)} // Close navbar on link click
               >
                 <FontAwesomeIcon icon={faCake} /> Dessert
@@ -115,13 +137,13 @@ const App = () => {
               {basketItems.length > 0 ? (
                 <Link
                   to="/basket"
-                  style={{ textDecoration: 'none' }}
+                  style={{ textDecoration: "none" }}
                   onClick={() => setSidebarOpen(false)} // Close navbar on link click
                 >
                   <FontAwesomeIcon icon={faBasketShopping} /> Basket
                 </Link>
               ) : (
-                <span style={{ textDecoration: 'none', cursor: 'not-allowed' }}>
+                <span style={{ textDecoration: "none", cursor: "not-allowed" }}>
                   <FontAwesomeIcon icon={faBasketShopping} /> Basket
                 </span>
               )}
@@ -131,32 +153,48 @@ const App = () => {
         <div className="content">
           <Routes>
             <Route path="/" element={<Homepage onOpenNavbar={openNavbar} />} />
-            <Route path="/main-course" element={<MainCourseSection addToBasket={addToBasket} />} />
-            <Route path="/drink" element={<DrinkSection addToBasket={addToBasket} />} />
-            <Route path="/dessert" element={<DessertSection addToBasket={addToBasket} />} />
+            <Route
+              path="/main-course"
+              element={<MainCourseSection addToBasket={addToBasket} />}
+            />
+            <Route
+              path="/drink"
+              element={<DrinkSection addToBasket={addToBasket} />}
+            />
+            <Route
+              path="/dessert"
+              element={<DessertSection addToBasket={addToBasket} />}
+            />
             <Route
               path="/order-summary"
-              element={<OrderSummary basketItems={basketItems} ticketNumber={generatedTicketNumber} />}
+              element={
+                <OrderSummary
+                  basketItems={basketItems}
+                  ticketNumber={generatedTicketNumber}
+                />
+              }
             />
             <Route
               path="/basket"
-              element={basketItems.length > 0 ? (
-                <BasketSection
-                  basketItems={basketItems}
-                  onPlaceOrder={placeOrder}
-                  onRemoveItem={removeFromBasket}
-                  onReduceQuantity={handleReduceQuantity} // Pass handleReduceQuantity instead of reduceQuantity
-                  addQuantity={addQuantity}
-                />
-              ) : (
-                <Navigate to="/" />
-              )}
+              element={
+                basketItems.length > 0 ? (
+                  <BasketSection
+                    basketItems={basketItems}
+                    onPlaceOrder={placeOrder}
+                    onRemoveItem={removeFromBasket}
+                    onReduceQuantity={handleReduceQuantity} // Pass handleReduceQuantity instead of reduceQuantity
+                    addQuantity={addQuantity}
+                  />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
             />
           </Routes>
         </div>
       </div>
     </Router>
   );
-}
+};
 
 export default App;

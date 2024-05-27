@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import desserts from "./database/dessertDb";
-import './App.css';
+import "./App.css";
 
 const DessertSection = ({ addToBasket }) => {
   const [selectedDessert, setSelectedDessert] = useState(null);
@@ -33,13 +33,13 @@ const DessertSection = ({ addToBasket }) => {
   const handleQuantityChange = (e) => {
     const value = e.target.value;
     const parsedValue = parseInt(value, 10);
-    if (value === '' || (parsedValue >= 1)) {
-      setQuantity(value === '' ? '' : parsedValue);
+    if (value === "" || parsedValue >= 1) {
+      setQuantity(value === "" ? "" : parsedValue);
     }
   };
 
   const handleQuantityBlur = () => {
-    if (quantity === '' || quantity < 1) {
+    if (quantity === "" || quantity < 1) {
       setQuantity(1);
     }
   };
@@ -50,11 +50,21 @@ const DessertSection = ({ addToBasket }) => {
       <p>Indulge in our delightful desserts.</p>
       <div className="menu dessert-menu">
         {desserts.map((dessert, index) => (
-          <div key={index} className={`item dessert-item ${index % 2 === 0 ? 'left' : 'right'}`} onClick={() => handleItemClick(dessert)}>
-            <img src={dessert.image} alt={dessert.name} className="dessert-image" />
+          <div
+            key={index}
+            className={`item dessert-item ${
+              index % 2 === 0 ? "left" : "right"
+            }`}
+            onClick={() => handleItemClick(dessert)}
+          >
+            <img
+              src={dessert.image}
+              alt={dessert.name}
+              className="dessert-image"
+            />
             <div className="dessert-info">
               <h3>{dessert.name}</h3>
-              <p>{dessert.price}</p>
+              <p className="price">{dessert.price}</p>
               <button onClick={() => handleItemClick(dessert)}>Order</button>
             </div>
           </div>
@@ -67,17 +77,21 @@ const DessertSection = ({ addToBasket }) => {
             <p>{selectedDessert.description}</p>
             <div className="quantity-counter">
               <label>Quantity:</label>
-              <input 
-                type="number" 
-                min="1" 
-                value={quantity} 
+              <input
+                type="number"
+                min="1"
+                value={quantity}
                 onChange={handleQuantityChange}
                 onBlur={handleQuantityBlur}
               />
             </div>
             <div className="button-group">
-              <button className="close-button" onClick={handleCloseDescription}>Close</button>
-              <button className="order-button" onClick={handleOrder}>Order Now</button>
+              <button className="close-button" onClick={handleCloseDescription}>
+                Close
+              </button>
+              <button className="order-button" onClick={handleOrder}>
+                Order Now
+              </button>
             </div>
           </div>
         </div>
@@ -89,6 +103,6 @@ const DessertSection = ({ addToBasket }) => {
       )}
     </div>
   );
-}
+};
 
 export default DessertSection;
