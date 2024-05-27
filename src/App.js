@@ -51,7 +51,6 @@ const App = () => {
       const updatedItem = { ...updatedBasketItems[index] };
 
       if (updatedItem.quantity > 0) {
-        // Check if quantity is greater than 0 before reducing
         updatedItem.quantity -= 1;
         updatedBasketItems[index] = updatedItem;
         setBasketItems(updatedBasketItems); // Update the state with the updated basket items array
@@ -190,6 +189,7 @@ const App = () => {
                 )
               }
             />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       </div>
