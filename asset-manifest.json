@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SystemMAR/static/css/main.a8f9fbf8.css",
-    "main.js": "/SystemMAR/static/js/main.74e73aac.js",
+    "main.js": "/SystemMAR/static/js/main.84fca217.js",
     "static/js/453.b0cbd5c8.chunk.js": "/SystemMAR/static/js/453.b0cbd5c8.chunk.js",
     "static/media/FRUIT.jpg": "/SystemMAR/static/media/FRUIT.ef030613b60dd822e8b0.jpg",
     "static/media/CAKE.jpg": "/SystemMAR/static/media/CAKE.6c9abf3615a0c358b8b3.jpg",
@@ -12,11 +12,11 @@
     "static/media/TEA.jpg": "/SystemMAR/static/media/TEA.187fdca809c72dbbc539.jpg",
     "index.html": "/SystemMAR/index.html",
     "main.a8f9fbf8.css.map": "/SystemMAR/static/css/main.a8f9fbf8.css.map",
-    "main.74e73aac.js.map": "/SystemMAR/static/js/main.74e73aac.js.map",
+    "main.84fca217.js.map": "/SystemMAR/static/js/main.84fca217.js.map",
     "453.b0cbd5c8.chunk.js.map": "/SystemMAR/static/js/453.b0cbd5c8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a8f9fbf8.css",
-    "static/js/main.74e73aac.js"
+    "static/js/main.84fca217.js"
   ]
 }
